@@ -1,0 +1,5 @@
+
+User-agent: *
+Allow: /
+
+Sitemap: https://dynamic-trifle-18a975.netlify.app/sitemap.xml
