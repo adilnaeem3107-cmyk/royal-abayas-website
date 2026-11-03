@@ -8,10 +8,11 @@ let selectedAbaya = {
 
 let selectedAbayaColor = "";
 
-// Open Product Menu
-function openProduct(name, price) {
+
+function openProduct(name, price, image) {
     selectedAbaya.name = name;
     selectedAbaya.price = price;
+    selectedAbaya.image = image;
 
     document.getElementById("productName").innerText = name;
     document.getElementById("productPrice").innerText =
@@ -20,19 +21,22 @@ function openProduct(name, price) {
     document.getElementById("productMenu").style.display = "flex";
 }
 
+
 // Close Product Menu
 function closeProduct() {
     document.getElementById("productMenu").style.display = "none";
 }
-
-// Add Product to Cart
 function addSelectedAbaya() {
-    addToCart(selectedAbaya.name, selectedAbaya.price);
+    addToCart(
+        selectedAbaya.name,
+        selectedAbaya.price,
+        selectedAbaya.image
+    );
+
     closeProduct();
 }
 
-// Common Add to Cart Function
-function addToCart(name, price) {
+function addToCart(name, price, image) {
 
     let existingItem = cart.find(item => item.name === name);
 
@@ -42,12 +46,14 @@ function addToCart(name, price) {
         cart.push({
             name: name,
             price: price,
+            image: image,
             quantity: 1
         });
     }
 
     alert("Product added to cart!");
 }
+
 
 
 
@@ -79,8 +85,7 @@ function addExclusiveDesign(index) {
     let item = exclusiveDesignList[index];
 
     if (!item) return;
-
-    addToCart(item.name, item.price);
+addToCart(item.name, item.price, "images/abaya 8.jpg.jpg");
     alert(item.name + " added to cart!");
 }
 
@@ -129,6 +134,7 @@ function viewCart() {
 
         cartItems.innerHTML += `
             <div class="cart-item">
+            <img src="${item.image}" class="cart-product-image">
                 <p><b>${item.name}</b></p>
 
                 <p>Price: Rs. ${item.price.toLocaleString()}</p>
@@ -273,7 +279,7 @@ function addColorAbayaToCart() {
     let productName =
         "Simple Full Flare Abaya - " + selectedAbayaColor;
 
-    addToCart(productName, 2800);
+  addToCart(productName, 2800, "images/abaya 11.jpg.jpg");
 
     closeColorPopup();
 }
