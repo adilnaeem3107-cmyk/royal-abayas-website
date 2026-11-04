@@ -486,6 +486,8 @@ header {
     color: white;
     width: 90%;
     max-width: 500px;
+    max-height: 85vh;
+    overflow-y: auto;
     padding: 25px;
     border: 2px solid #d4af37;
     border-radius: 15px;
